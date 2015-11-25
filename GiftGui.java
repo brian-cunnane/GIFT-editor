@@ -15,7 +15,7 @@ public class GiftGui extends JFrame{
 	JPanel MCQPanel = new JPanel();
 	JPanel MCQAPanel = new JPanel();
 	JPanel numericalPanel = new JPanel(new MigLayout("debug","",""));
-	JPanel matchingPanel = new JPanel();
+	JPanel matchingPanel = new JPanel(new MigLayout("debug","",""));
 	JPanel fillBlanksPanel = new JPanel();
 	
 	JLabel test1 = new JLabel("test1");
@@ -35,11 +35,12 @@ public class GiftGui extends JFrame{
 	JButton create = new JButton("Create GIFT Code");
 	
 	Container numericalContainer = new Container();
+	Container matchingContainer = new Container();
 	JTabbedPane tabBar = new JTabbedPane();
 	
 	public GiftGui() {
 		
-		setLayout(new MigLayout("","[][]","[][][]"));
+		setLayout(new MigLayout());
 		//essay panel goes here
 		essayPanel.add(test1);
 		
@@ -54,36 +55,63 @@ public class GiftGui extends JFrame{
 		MCQAPanel.add(test4);
 		
 		//numerical panel goes here
-		numericalContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
+		numericalContainer.setLayout(new MigLayout("","[][][][][][]","[][]"));
 		String[] numbers = {"-2","-1","0","1","2"};
 		JLabel title = new JLabel("Question Title:");
-		JLabel question = new JLabel("Question:");
-		JLabel answer = new JLabel("Answer:");
-		JLabel output = new JLabel("GIFT Output:");
+		JLabel questionLabel = new JLabel("Question:");
+		JLabel answerLabel = new JLabel("Answer:");
+		JLabel feedbackLabel = new JLabel("Feedback");
+		JLabel outputLabel = new JLabel("GIFT Output:");
 		SpinnerListModel numberModel = new SpinnerListModel(numbers);
 		JSpinner options = new JSpinner(numberModel);
 		JTextArea questionText = new JTextArea();
 		JTextArea answerText = new JTextArea();
+		JTextArea feedbackText = new JTextArea();
 		JTextArea outputText = new JTextArea();
 		questionText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 		answerText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-		
+		feedbackText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 		numericalContainer.add(title);
 		numericalContainer.add(options,"wrap");
-		numericalContainer.add(question);
+		
+		//TODO reduce gap between question label and text field
+		numericalContainer.add(questionLabel);
 		numericalContainer.add(questionText,"pushx, growx, span, wrap");
-		numericalContainer.add(answer);
-		//TODO split answer text into answer and feedback
-		numericalContainer.add(answerText,"pushx, growx, span, wrap");
+		
+		numericalContainer.add(answerLabel);
+		numericalContainer.add(feedbackLabel, "wrap");
+		numericalContainer.add(answerText,"pushx, growx");
+		numericalContainer.add(feedbackText,"pushx, growx, span, wrap");
 		
 		numericalContainer.add(clearQ,"align right, span, wrap");
 		numericalContainer.add(create,"align right, span, wrap");
-		numericalContainer.add(output);
+		
+		numericalContainer.add(outputLabel);
 		numericalContainer.add(outputText,"pushx, growx, span, wrap");
 		numericalContainer.add(clearOut, "align right, span, wrap");
 		numericalPanel.add(numericalContainer,"pushx, growx, span");
+		
 		//matching panel goes here
-		matchingPanel.add(test6);
+		matchingContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
+		JLabel matchingTitleLabel = new JLabel("Question Title:");
+		JLabel matchingQuestionLabel = new JLabel("Question:");
+		JLabel matchingAnswerLabel = new JLabel("Answer:");
+		JLabel matchingSelectLabel = new JLabel("Select:");
+		JLabel matchingGiftOutputLabel = new JLabel("Gift Output:");
+		
+		JTextArea matchingQuestionText = new JTextArea();
+		
+		JButton matchingAddQA = new JButton("Add Q&A");
+		JButton matchingRemoveSelected = new JButton("Remove Selected");
+		
+		matchingContainer.add(matchingTitleLabel);
+		matchingContainer.add(matchingQuestionText,"pushx, growx, span, wrap");
+		matchingContainer.add(matchingAddQA,"cell 1 2");
+		/*TODO initially add 1 Q and A pair.
+		 button press will call some kind of creator method to add additional pairs.
+		 is there a JTextArea factory? Maybe store in an array and increment with button?*/
+		
+		matchingPanel.add(matchingContainer, "pushx, growx, span");
 		
 		//fill the blanks panel goes here
 		fillBlanksPanel.add(test7);
