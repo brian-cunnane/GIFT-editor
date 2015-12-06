@@ -18,18 +18,14 @@ public class GiftGui extends JFrame implements ActionListener{
 	JPanel essayPanel = new JPanel(new MigLayout("","[][][]","[][][]"));
 	JPanel trueFalsePanel = new JPanel();
 	JPanel MCQPanel = new JPanel(new MigLayout("debug","",""));
-	JPanel MCQAPanel = new JPanel();
+	JPanel MCQAPanel = new JPanel(new MigLayout("debug","",""));
 	JPanel numericalPanel = new JPanel(new MigLayout("debug","",""));
 	JPanel matchingPanel = new JPanel();
 	JPanel fillBlanksPanel = new JPanel();
 	public static boolean isPressed = false;
 	JRadioButton extra_radio = new JRadioButton("Correct");
-	
-	JLabel test1 = new JLabel("test1");
-	JLabel test2 = new JLabel("test2");
-	JLabel test3 = new JLabel("test3");
-	JLabel test4 = new JLabel("test4");
-	JLabel test5 = new JLabel("test5");
+
+
 	JLabel test6 = new JLabel("test6");
 	JLabel test7 = new JLabel("test7");
 	
@@ -47,34 +43,79 @@ public class GiftGui extends JFrame implements ActionListener{
 	JButton MCQButton4 = new JButton("Create Gift Code");
 	JButton MCQButton5 = new JButton("Clear Output List");
 
+	JButton MCQAButton = new JButton("Add Answer");
+	JButton MCQAButton2 = new JButton("Remove Answer");
+	JButton MCQAButton3 = new JButton("Clear Question");
+	JButton MCQAButton4 = new JButton("Create Gift Code");
+	JButton MCQAButton5 = new JButton("Clear Output List");
+
 	JRadioButton MCQRadio = new JRadioButton("Correct");
 	JRadioButton MCQRadio2 = new JRadioButton("Correct");
 	JRadioButton MCQRadio3 = new JRadioButton("Correct");
 	JRadioButton MCQRadio4 = new JRadioButton("Correct");
 
-	JTextArea MCQquestionText = new JTextArea("Question Text");
-	JTextArea MCQanswerText1 = new JTextArea("Text");
-	JTextArea MCQanswerText2 = new JTextArea("Text");
-	JTextArea MCQanswerText3 = new JTextArea("Text");
-	JTextArea MCQanswerText4 = new JTextArea("Text");
-	JTextArea MCQanswerText5 = new JTextArea("Text");
-	JTextArea MCQanswerText6 = new JTextArea("Text");
-	JTextArea MCQanswerText7 = new JTextArea("Text");
-	JTextArea MCQanswerText8 = new JTextArea("Text");
+	JTextArea MCQquestionText = new JTextArea("");
+	JTextArea MCQanswerText1 = new JTextArea("");
+	JTextArea MCQanswerText2 = new JTextArea("");
+	JTextArea MCQanswerText3 = new JTextArea("");
+	JTextArea MCQanswerText4 = new JTextArea("");
+	JTextArea MCQanswerText5 = new JTextArea("");
+	JTextArea MCQanswerText6 = new JTextArea("");
+	JTextArea MCQanswerText7 = new JTextArea("");
+	JTextArea MCQanswerText8 = new JTextArea("");
+
+	JTextArea MCQAquestionText = new JTextArea("");
+	JTextArea MCQAanswerText1 = new JTextArea("");
+	JTextArea MCQAanswerText2 = new JTextArea("");
+	JTextArea MCQAanswerText3 = new JTextArea("");
+	JTextArea MCQAanswerText4 = new JTextArea("");
+	JTextArea MCQAanswerText5 = new JTextArea("");
+	JTextArea MCQAanswerText6 = new JTextArea("");
+
+	String[] MCQAnumbers = {"-2","-1","0","1","2"};
+	String[] MCQAnumbers2 = {"-2","-1","0","1","2"};
+	String[] MCQAnumbers3 = {"-2","-1","0","1","2"};
+
+	SpinnerListModel MCQnumberModel = new SpinnerListModel(MCQAnumbers);
+	SpinnerListModel MCQnumberModel2 = new SpinnerListModel(MCQAnumbers2);
+	SpinnerListModel MCQnumberModel3 = new SpinnerListModel(MCQAnumbers3);
+
+	JSpinner MCQAoptions = new JSpinner(MCQnumberModel);
+	JSpinner MCQAoptions2 = new JSpinner(MCQnumberModel2);
+	JSpinner MCQAoptions3 = new JSpinner(MCQnumberModel3);
 
 	JTextArea GiftOutput= new JTextArea();
+	JTextArea MCQAGiftOutput= new JTextArea();
 
 	Container numericalContainer = new Container();
 
 	//4 containers for each area
 	Container MCQContainer = new Container();
+	Container MCQtitleContainer  = new Container();
 	Container answerContainer = new Container();
 	Container answer2Container = new Container();
 	Container radioContainer = new Container();
 	Container OutputContainer = new Container();
 	Container ButtonContainer = new Container();
+
+	Container MCQAContainer = new Container();
+	Container MCQAtitleContainer = new Container();
+	Container MCQAanswerContainer = new Container();
+	Container MCQAanswer2Container = new Container();
+	Container MCQAradioContainer = new Container();
+	Container MCQAOutputContainer = new Container();
+	Container MCQAButtonContainer = new Container();
+
 	JTextField textField;
 	JTextField extra_feed;
+	JTextField MCQAtextField;
+	JTextField MCQAextra_feed;
+
+
+	String[] MCQAnumbers5 = {"-1","0","1"};
+	SpinnerListModel MCQnumberModel5 = new SpinnerListModel(MCQAnumbers5);
+	JSpinner MCQAoptions5 = new JSpinner(MCQnumberModel5);
+
 	JTabbedPane tabBar = new JTabbedPane();
 	
 	public GiftGui() {
@@ -208,22 +249,17 @@ public class GiftGui extends JFrame implements ActionListener{
 		trueFalsePanel.add(torf_out_text,"pushx, growx, pushy, growy, wrap");
 		trueFalsePanel.add(clear_out, "right, span2, w 150,");
 		/* ======================================================================================================== */
-		//MCQ panel goes here
-		//MCQPanel.add(test3);
-		//essay panel goes here
-		//essayPanel.add(test1);
-
-	//	trueFalsePanel.add(test2);
 
 		MCQContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
+		MCQtitleContainer.setLayout(new MigLayout("","[]","[]"));
 		answerContainer.setLayout(new MigLayout("","[][]","[][][][][][]"));
 		answer2Container.setLayout(new MigLayout("debug","[][]","[][][][][][]"));
 		radioContainer.setLayout(new MigLayout("debug","[]","[][][][][]"));
-		ButtonContainer.setLayout(new MigLayout("debug","[][]","[][][][]"));
+		ButtonContainer.setLayout(new MigLayout("debug","[][]","[][]"));
 		OutputContainer.setLayout(new MigLayout("debug","[]","[][]"));
 
 		JLabel MCQtitle = new JLabel("Question Title:");
-		JTextField MCQTitleText = new JTextField("Title Text");
+		JTextField MCQTitleText = new JTextField("");
 		MCQTitleText.setBackground(Color.WHITE);
 		JLabel MCQquestion = new JLabel("Question:");
 		JLabel MCQanswer = new JLabel("Answer:           ");
@@ -237,7 +273,6 @@ public class GiftGui extends JFrame implements ActionListener{
 		MCQButton3.addActionListener(this);
 		MCQButton4.addActionListener(this);
 		MCQButton5.addActionListener(this);
-
 
 		MCQquestionText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 		MCQanswerText1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
@@ -255,15 +290,15 @@ public class GiftGui extends JFrame implements ActionListener{
 		MCQContainer.add(MCQquestion);
 		MCQContainer.add(MCQquestionText,"h 40!, pushx, growx, span, wrap");
 
-		answerContainer.add(MCQanswer);
+		MCQtitleContainer.add(MCQanswer,"aligny top");
 		answerContainer.add(MCQChoice);
 		answer2Container.add(MCQFeedback);
 		radioContainer.add(MCQSelect);
 
-		answerContainer.add(MCQanswerText1, " cell 1 1,pushx, growx, span, wrap");//col, row
-		answerContainer.add(MCQanswerText2, "pushx, growx, span, wrap, cell 1 2");
-		answerContainer.add(MCQanswerText3, "pushx, growx, span, wrap, cell 1 3");
-		answerContainer.add(MCQanswerText4, "h 20!, w 300!,wrap, cell 1 4");
+		answerContainer.add(MCQanswerText1, " cell 0 1,pushx, growx, span, wrap");//col, row
+		answerContainer.add(MCQanswerText2, "pushx, growx, span, wrap, cell 0 2");
+		answerContainer.add(MCQanswerText3, "pushx, growx, span, wrap, cell 0 3");
+		answerContainer.add(MCQanswerText4, "pushx, growx, span, wrap, cell 0 4");
 
 		answer2Container.add(MCQanswerText5, "pushx, growx, span, wrap, cell 0 1");
 		answer2Container.add(MCQanswerText6, "pushx, growx, span, wrap, cell 0 2");
@@ -275,29 +310,104 @@ public class GiftGui extends JFrame implements ActionListener{
 		radioContainer.add(MCQRadio3, ", cell 0 3");
 		radioContainer.add(MCQRadio4, ", cell 0 4,wrap");
 
-		ButtonContainer.add(MCQButton, "gapleft 80, cell 1 0");
-		ButtonContainer.add(MCQButton2, "gapleft 80, cell 1 1");
-		ButtonContainer.add(MCQButton3, "gapleft 400, cell 4 0");
-		ButtonContainer.add(MCQButton4, "gapleft 400, cell 4 1");
+		//ButtonContainer.add(MCQButton, "gapleft 80, cell 1 0");
+		ButtonContainer.add(MCQButton, " gapright 440, right, pushx, cell 1 0");
+		ButtonContainer.add(MCQButton2, "gapright 420, right, pushx, cell 1 1");
+		ButtonContainer.add(MCQButton3, "right,pushx, cell 4 0");
+		ButtonContainer.add(MCQButton4, "right,pushx, cell 4 1");
 
 		OutputContainer.add( MCQoutput);
 		OutputContainer.add( GiftOutput, "cell 0 1 ,h 200!, pushx, growx, span, wrap");
-		OutputContainer.add( MCQButton5, "gapleft 600");
+		OutputContainer.add( MCQButton5, "right,pushx");
 
 		GiftOutput.setText("::This is multiple choice::");
 
 		MCQPanel.add(MCQContainer, "pushx, growx, span");
+		MCQPanel.add(MCQtitleContainer, "w 50, h 100, pushx, growx");
 		MCQPanel.add(answerContainer,"w 350, pushx, growx");
 		MCQPanel.add(answer2Container,"w 300, pushx, growx");
 		MCQPanel.add(radioContainer,"wrap");
-
-
 		MCQPanel.add(ButtonContainer,"pushx, growx, span");
 		MCQPanel.add(OutputContainer,"pushx, growx, span");
 
-		// MCQA panel goes here
-		MCQAPanel.add(test4);
-		
+/* ======================================================================================================== */
+
+		JLabel MCQAtitle = new JLabel("Question Title:");
+		JTextField MCQATitleText = new JTextField("");
+		MCQATitleText.setBackground(Color.WHITE);
+		JLabel MCQAquestion = new JLabel("Question:");
+		JLabel MCQAanswer = new JLabel("Answer:");
+		JLabel MCQAoutput = new JLabel("GIFT Output:");
+		JLabel MCQAChoice = new JLabel("Choice:");
+		JLabel MCQAFeedback = new JLabel("Feedback:");
+		JLabel MCQASelect = new JLabel("Select:");
+
+		MCQAquestionText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAquestionText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAanswerText1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAanswerText2.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAanswerText3.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAanswerText4.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAanswerText5.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAanswerText6.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		MCQAGiftOutput.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+
+		MCQAButton.addActionListener(this);
+		MCQAButton2.addActionListener(this);
+		MCQAButton3.addActionListener(this);
+		MCQAButton4.addActionListener(this);
+		MCQAButton5.addActionListener(this);
+
+		MCQAContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
+
+		MCQAanswerContainer.setLayout(new MigLayout("","[][]","[][][][][][]"));
+		MCQAtitleContainer.setLayout(new MigLayout("","[]","[]"));
+		MCQAanswer2Container.setLayout(new MigLayout("debug","[][][]","[][][][][][]"));
+		MCQAradioContainer.setLayout(new MigLayout("debug","[]","[][][][][]"));
+		MCQAButtonContainer.setLayout(new MigLayout("debug","[][]","[][][][]"));
+		MCQAOutputContainer.setLayout(new MigLayout("debug","[]","[][]"));
+
+		MCQAContainer.add(MCQAtitle);
+		MCQAContainer.add(MCQATitleText,"pushx, growx, span, wrap");
+		MCQAContainer.add(MCQAquestion);
+		MCQAContainer.add(MCQAquestionText,"h 40!, pushx, growx, span, wrap");
+
+		MCQAGiftOutput.setText("::This is multiple choice::");
+
+		MCQAtitleContainer.add(MCQAanswer,"aligny top");
+		MCQAanswerContainer.add(MCQAChoice);
+		MCQAanswer2Container.add(MCQAFeedback);
+		MCQAradioContainer.add(MCQASelect);
+
+		MCQAanswerContainer.add(MCQAanswerText1, " cell 0 1,pushx, growx, span, wrap");//col, row
+		MCQAanswerContainer.add(MCQAanswerText2, "pushx, growx, span, wrap, cell 0 2");
+		MCQAanswerContainer.add(MCQAanswerText3, "cell 0 3,pushx, growx, span, wrap");
+
+		MCQAanswer2Container.add(MCQAanswerText4, "pushx, growx, span, wrap, cell 0 1");
+		MCQAanswer2Container.add(MCQAanswerText5, "pushx, growx, span, wrap, cell 0 2");
+		MCQAanswer2Container.add(MCQAanswerText6, "pushx, growx, span, wrap, cell 0 3");
+
+		MCQAradioContainer.add(MCQAoptions,  ", cell 0 1");
+		MCQAradioContainer.add(MCQAoptions2, ", cell 0 2");
+		MCQAradioContainer.add(MCQAoptions3, ", cell 0 3,wrap");
+
+		MCQAButtonContainer.add(MCQAButton, "gapright 440, right, pushx, cell 1 0");
+		MCQAButtonContainer.add(MCQAButton2, "gapright 420, right, pushx, cell 1 1");
+		MCQAButtonContainer.add(MCQAButton3, "right,pushx, cell 4 0");
+		MCQAButtonContainer.add(MCQAButton4, "right,pushx, cell 4 1");
+
+		MCQAOutputContainer.add( MCQAoutput);
+		MCQAOutputContainer.add( MCQAGiftOutput, "cell 0 1 ,h 200!, pushx, growx, span, wrap");
+		MCQAOutputContainer.add( MCQAButton5, "right,pushx");
+
+		MCQAPanel.add(MCQAContainer, "pushx, growx, span");
+		MCQAPanel.add(MCQAtitleContainer, "w 50, h 100, pushx, growx");
+		MCQAPanel.add(MCQAanswerContainer,"w 350, pushx, growx");
+		MCQAPanel.add(MCQAanswer2Container,"w 300, pushx, growx");
+		MCQAPanel.add(MCQAradioContainer,"wrap");
+		MCQAPanel.add(MCQAButtonContainer,"pushx, growx, span");
+		MCQAPanel.add(MCQAOutputContainer,"pushx, growx, span");
+/* ======================================================================================================== */
 		//numerical panel goes here
 		numericalContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
 		String[] numbers = {"-2","-1","0","1","2"};
@@ -355,7 +465,7 @@ public class GiftGui extends JFrame implements ActionListener{
 		gg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		gg.setLocation(300,300);
-		gg.setSize(800,700);
+		gg.setSize(1000,700);
 		
 		gg.setVisible(true);
 		
@@ -368,11 +478,11 @@ public class GiftGui extends JFrame implements ActionListener{
 		{
 
 			textField = new JTextField("Text");
-			answerContainer.add(textField," gapleft 82,  pushx, growx, span, wrap");
+			answerContainer.add(textField,"   pushx, growx, span, wrap");
 			textField.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 			extra_feed = new JTextField("Text");
 			answer2Container.add(extra_feed," pushx, growx, span, wrap");
-			textField.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+			extra_feed.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 			 extra_radio = new JRadioButton("Correct");
 			radioContainer.add(extra_radio,  "wrap");
 		}
@@ -386,16 +496,16 @@ public class GiftGui extends JFrame implements ActionListener{
 		}
 		else if(e.getSource() == MCQButton3) {
 
-			MCQanswerText1.setText("Text");
-			MCQanswerText2.setText("Text");
-			MCQanswerText3.setText("Text");
-			MCQanswerText4.setText("Text");
-			MCQanswerText5.setText("Text");
-			MCQanswerText6.setText("Text");
-			MCQanswerText7.setText("Text");
-			MCQanswerText8.setText("Text");
-			textField.setText("Text");
-			extra_feed.setText("Text");
+			MCQanswerText1.setText("");
+			MCQanswerText2.setText("");
+			MCQanswerText3.setText("");
+			MCQanswerText4.setText("");
+			MCQanswerText5.setText("");
+			MCQanswerText6.setText("");
+			MCQanswerText7.setText("");
+			MCQanswerText8.setText("");
+			textField.setText("");
+			extra_feed.setText("");
 
 		}
 			else if(e.getSource() == MCQButton4) {
@@ -408,37 +518,102 @@ public class GiftGui extends JFrame implements ActionListener{
 			String answer3 = MCQanswerText3.getText();
 			String answer4 = MCQanswerText4.getText();
 
+			String feedback = MCQanswerText5.getText();
+			String feedback2 = MCQanswerText6.getText();
+			String feedback3 = MCQanswerText7.getText();
+			String feedback4 = MCQanswerText8.getText();
+
 			if(MCQRadio.isSelected()) {
-				GiftOutput.append(" = " + answer + "\n");
-				GiftOutput.append(" ~ " + answer2 + "\n");
-				GiftOutput.append(" ~ " + answer3 + "\n");
-				GiftOutput.append(" ~ " + answer4 + "\n");
+				GiftOutput.append(" = " + answer + "\n" + "#Yes-Well done" +"\n");
+				GiftOutput.append(" ~ " + answer2 + "\n"+ "#" + feedback2 +"\n");
+				GiftOutput.append(" ~ " + answer3 + "\n"+ "#" + feedback3 +"\n");
+				GiftOutput.append(" ~ " + answer4 + "\n"+ "#" + feedback4 +"\n");
 			}
 			else if(MCQRadio2.isSelected())
 			{
-				GiftOutput.append(" ~ " + answer + "\n");
-				GiftOutput.append(" = " + answer2 + "\n");
-				GiftOutput.append(" ~ " + answer3 + "\n");
-				GiftOutput.append(" ~ " + answer4 + "\n");
+				GiftOutput.append(" ~ " + answer + "\n" + "#" + feedback+ "\n");
+				GiftOutput.append(" = " + answer2 + "\n"+ "#Yes-Well done" +"\n");
+				GiftOutput.append(" ~ " + answer3 + "\n"+ "#" + feedback3 +"\n");
+				GiftOutput.append(" ~ " + answer4 + "\n"+ "#" + feedback4 +"\n");
 			}
 			else if(MCQRadio3.isSelected())
 			{
-				GiftOutput.append(" = " + answer + "\n");
-				GiftOutput.append(" ~ " + answer2 + "\n");
-				GiftOutput.append(" = " + answer3 + "\n");
-				GiftOutput.append(" ~ " + answer4 + "\n");
+				GiftOutput.append(" ~ " + answer + "\n" + "#" + feedback+ "\n");
+				GiftOutput.append(" ~ " + answer2 + "\n"+ "#"+ feedback2 + "\n");
+				GiftOutput.append(" = " + answer3 + "\n"+ "#Yes-Well done" +"\n");
+				GiftOutput.append(" ~ " + answer4 + "\n"+ "#" + feedback4 +"\n");
 			}
 			else if(MCQRadio3.isSelected())
 			{
-				GiftOutput.append(" ~ " + answer + "\n");
-				GiftOutput.append(" ~ " + answer2 + "\n");
-				GiftOutput.append(" ~ " + answer3 + "\n");
-				GiftOutput.append(" = " + answer4 + "\n");
+				GiftOutput.append(" ~ " + answer + "\n" + "#" + feedback+ "\n");
+				GiftOutput.append(" ~ " + answer2 + "\n"+ "#"+ feedback2 + "\n");
+				GiftOutput.append(" ~ " + answer3 + "\n"+ "#"+ feedback3 +"\n");
+				GiftOutput.append(" = " + answer4 + "\n"+ "#Yes-Well done"  +"\n");
 			}
 
 		}
 		else if(e.getSource() == MCQButton5) {
 			GiftOutput.setText("::This is multiple choice::");
+		}
+		else if(e.getSource() == MCQAButton)
+		{
+
+			MCQAtextField = new JTextField("Text");
+			MCQAanswerContainer.add(MCQAtextField,"  pushx, growx, span, wrap");
+			MCQAtextField.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+			MCQAextra_feed = new JTextField("Text");
+			MCQAanswer2Container.add(MCQAextra_feed," pushx, growx, span, wrap");
+			MCQAtextField.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+			MCQAradioContainer.add(MCQAoptions5, "wrap");
+		}
+		else if(e.getSource() == MCQAButton2)
+		{
+			MCQAanswerContainer.remove(MCQAtextField);
+			repaint();
+			MCQAanswer2Container.remove(MCQAextra_feed);
+			repaint();
+			MCQAradioContainer.remove(MCQAoptions5);
+		}
+		else if(e.getSource() == MCQAButton3) {
+
+			MCQAanswerText1.setText("");
+			MCQAanswerText2.setText("");
+			MCQAanswerText3.setText("");
+			MCQAanswerText4.setText("");
+			MCQAanswerText5.setText("");
+			MCQAanswerText6.setText("");
+			MCQAtextField.setText("");
+			MCQAextra_feed.setText("");
+
+		}
+		else if(e.getSource() == MCQAButton4) {
+			String QuestionText = MCQAquestionText.getText();
+
+			MCQAGiftOutput.append(QuestionText + "{" + "\n");
+
+			String answer = MCQAanswerText1.getText();
+			String answer2 = MCQAanswerText2.getText();
+			String answer3 = MCQAanswerText3.getText();
+
+			String feedback = MCQAanswerText4.getText();
+			String feedback2 = MCQAanswerText5.getText();
+			String feedback3 = MCQAanswerText6.getText();
+
+			String currentValue =  (String) MCQAoptions.getValue();
+			String currentValue2 = (String) MCQAoptions2.getValue();
+			String currentValue3 = (String) MCQAoptions3.getValue();
+			String currentValue5 = (String) MCQAoptions5.getValue();
+
+			MCQAGiftOutput.append(" ~%" + currentValue + "%" + answer + "\n");
+				MCQAGiftOutput.append("#" + feedback + "\n");
+			MCQAGiftOutput.append(" ~%" + currentValue2 + "%" + answer2 + "\n");
+			MCQAGiftOutput.append("#" + feedback2 + "\n");
+			MCQAGiftOutput.append(" ~%" + currentValue3 + "%" + answer3 + "\n");
+			MCQAGiftOutput.append("#" + feedback3 + "\n");
+
+		}
+		else if(e.getSource() == MCQButton5) {
+			MCQAGiftOutput.setText("::This is multiple choice::");
 		}
 
 	}
