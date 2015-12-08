@@ -24,6 +24,7 @@ public class GiftGui extends JFrame implements ActionListener{
 	JPanel fillBlanksPanel = new JPanel();
 	public static boolean isPressed = false;
 	JRadioButton extra_radio = new JRadioButton("Correct");
+	JRadioButton FillBlanksextra_radio = new JRadioButton("Correct");
 
 
 	JLabel test6 = new JLabel("test6");
@@ -72,6 +73,25 @@ public class GiftGui extends JFrame implements ActionListener{
 	JTextArea MCQAanswerText5 = new JTextArea("");
 	JTextArea MCQAanswerText6 = new JTextArea("");
 
+	JTextArea FillBlanksquestionText = new JTextArea("");
+	JTextArea FillBlanksanswerText1 = new JTextArea("");
+	JTextArea FillBlanksanswerText2 = new JTextArea("");
+	JTextArea FillBlanksanswerText3 = new JTextArea("");
+	JTextArea FillBlanksanswerText4 = new JTextArea("");
+	JTextArea FillBlanksanswerText5 = new JTextArea("");
+
+	JButton FillBlanksButton = new JButton("Add Answer");
+	JButton FillBlanksButton2 = new JButton("Remove Answer");
+	JButton FillBlanksButton3 = new JButton("Clear Question");
+	JButton FillBlanksButton4 = new JButton("Create Gift Code");
+	JButton FillBlanksButton5 = new JButton("Clear Output List");
+
+	JRadioButton FillBlanksRadio = new JRadioButton("Correct");
+	JRadioButton FillBlanksRadio2 = new JRadioButton("Correct");
+	JRadioButton FillBlanksRadio3 = new JRadioButton("Correct");
+	JRadioButton FillBlanksRadio4 = new JRadioButton("Correct");
+
+
 	String[] MCQAnumbers = {"-2","-1","0","1","2"};
 	String[] MCQAnumbers2 = {"-2","-1","0","1","2"};
 	String[] MCQAnumbers3 = {"-2","-1","0","1","2"};
@@ -86,6 +106,7 @@ public class GiftGui extends JFrame implements ActionListener{
 
 	JTextArea GiftOutput= new JTextArea();
 	JTextArea MCQAGiftOutput= new JTextArea();
+	JTextArea FillBlanksGiftOutput= new JTextArea();
 
 	Container numericalContainer = new Container();
 
@@ -106,10 +127,21 @@ public class GiftGui extends JFrame implements ActionListener{
 	Container MCQAOutputContainer = new Container();
 	Container MCQAButtonContainer = new Container();
 
+	Container FillBlanksContainer = new Container();
+	Container FillBlankstitleContainer  = new Container();
+	Container FillBlanksanswerContainer = new Container();
+	Container FillBlanksanswer2Container = new Container();
+	Container FillBlanksradioContainer = new Container();
+	Container FillBlanksOutputContainer = new Container();
+	Container FillBlanksButtonContainer = new Container();
+
 	JTextField textField;
 	JTextField extra_feed;
 	JTextField MCQAtextField;
 	JTextField MCQAextra_feed;
+	JTextField FillBlankstextField;
+	JTextField FillBlanksextra_feed;
+
 
 
 	String[] MCQAnumbers5 = {"-1","0","1"};
@@ -362,7 +394,7 @@ public class GiftGui extends JFrame implements ActionListener{
 
 		MCQAanswerContainer.setLayout(new MigLayout("","[][]","[][][][][][]"));
 		MCQAtitleContainer.setLayout(new MigLayout("","[]","[]"));
-		MCQAanswer2Container.setLayout(new MigLayout("debug","[][][]","[][][][][][]"));
+		MCQAanswer2Container.setLayout(new MigLayout("debug","[]","[]"));
 		MCQAradioContainer.setLayout(new MigLayout("debug","[]","[][][][][]"));
 		MCQAButtonContainer.setLayout(new MigLayout("debug","[][]","[][][][]"));
 		MCQAOutputContainer.setLayout(new MigLayout("debug","[]","[][]"));
@@ -409,7 +441,7 @@ public class GiftGui extends JFrame implements ActionListener{
 		MCQAPanel.add(MCQAOutputContainer,"pushx, growx, span");
 /* ======================================================================================================== */
 		//numerical panel goes here
-		numericalContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
+		numericalContainer.setLayout(new MigLayout("debug","[][][][][][]","[][][]"));
 		String[] numbers = {"-2","-1","0","1","2"};
 		JLabel title = new JLabel("Question Title:");
 		JLabel question = new JLabel("Question:");
@@ -441,8 +473,89 @@ public class GiftGui extends JFrame implements ActionListener{
 		matchingPanel.add(test6);
 		
 		//fill the blanks panel goes here
-		fillBlanksPanel.add(test7);
-		
+		/* ======================================================================================================== */
+		JLabel FillBlankstitle = new JLabel("Question Title:");
+		JTextField FillBlanksTitleText = new JTextField("");
+		FillBlanksTitleText.setBackground(Color.WHITE);
+		JLabel FillBlanksquestion = new JLabel("Question:");
+		JLabel FillBlanksanswer = new JLabel("Answer:");
+		JLabel FillBlanksoutput = new JLabel("GIFT Output:");
+		JLabel FilleBlanksChoice = new JLabel("Choice:");
+		JLabel FilleBlanksQEnd = new JLabel("Question End:");
+
+		fillBlanksPanel.setLayout(new MigLayout("debug","[][][][][]","[][]"));
+
+		FillBlanksquestionText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		FillBlanksanswerText1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		FillBlanksanswerText2.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		FillBlanksanswerText3.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		FillBlanksanswerText4.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		FillBlanksanswerText5.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		FillBlanksGiftOutput.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+
+		FillBlanksButton.addActionListener(this);
+		FillBlanksButton2.addActionListener(this);
+		FillBlanksButton3.addActionListener(this);
+		FillBlanksButton4.addActionListener(this);
+		FillBlanksButton5.addActionListener(this);
+
+
+		FillBlanksContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
+		FillBlankstitleContainer.setLayout(new MigLayout("","[]","[]"));
+		FillBlanksanswerContainer.setLayout(new MigLayout("","[]","[][][][][][]"));
+		FillBlanksradioContainer.setLayout(new MigLayout("debug","[]","[][][][][]"));
+		FillBlanksButtonContainer.setLayout(new MigLayout("debug","[][]","[][]"));
+		FillBlanksOutputContainer.setLayout(new MigLayout("debug","[]","[][]"));
+
+		FillBlanksContainer.add(FillBlankstitle);
+		FillBlanksContainer.add(FillBlanksTitleText,"pushx, growx, span, wrap");
+		FillBlanksContainer.add(FillBlanksquestion);
+		FillBlanksContainer.add(FillBlanksquestionText,"h 40!, pushx, growx, span, wrap");
+
+		FillBlanksOutputContainer.add( FillBlanksoutput);
+
+		FillBlanksanswerContainer.add(FilleBlanksChoice);
+		FillBlanksanswerContainer.add(FillBlanksanswerText1, " pushx, growx, span, wrap, cell 0 1");//col, row
+		FillBlanksanswerContainer.add(FillBlanksanswerText2, "pushx, growx, span, wrap , cell 0 2");
+		FillBlanksanswerContainer.add(FillBlanksanswerText3, "pushx, growx, span, wrap , cell 0 3");
+		FillBlanksanswerContainer.add(FillBlanksanswerText4, "pushx, growx, span, wrap, , cell 0 4");
+
+
+
+		FillBlanksButtonContainer.add(FillBlanksButton, " right, right, pushx, cell 3 0");
+		FillBlanksButtonContainer.add(FillBlanksButton2, "wrap, pushx, cell 3 0");
+
+
+		//FillBlanksButtonContainer.add(FillBlanksButton3, "right,pushx, cell 4 0");
+		//FillBlanksButtonContainer.add(FillBlanksButton4, "right,pushx, cell 4 1");
+		FillBlanksButtonContainer.add(FilleBlanksQEnd, " left, cell 0 0");
+		FillBlanksButtonContainer.add(FillBlanksanswerText5, "h 50!, pushx, growx,span, cell 1 1");
+		FillBlanksButtonContainer.add(FillBlanksButton3, "right, pushx, cell 3 2");
+		FillBlanksButtonContainer.add(FillBlanksButton4, "right,pushx, cell 3 2");
+
+		FillBlanksradioContainer.add(FillBlanksRadio,  ", cell 0 1");
+		FillBlanksradioContainer.add(FillBlanksRadio2, ", cell 0 2");
+		FillBlanksradioContainer.add(FillBlanksRadio3, ", cell 0 3");
+		FillBlanksradioContainer.add(FillBlanksRadio4, ", cell 0 4,wrap");
+
+
+
+		FillBlanksOutputContainer.add( FillBlanksGiftOutput, "cell 0 1 ,h 200!, pushx, growx, span, wrap");
+		FillBlanksOutputContainer.add( FillBlanksButton5, "right,pushx");
+
+		FillBlankstitleContainer.add(FillBlanksanswer,"aligny top");
+
+
+
+		fillBlanksPanel.add(FillBlanksContainer, "pushx, growx, span");
+		fillBlanksPanel.add(FillBlankstitleContainer, "w 10, h 100, pushx, growx");
+		fillBlanksPanel.add(FillBlanksanswerContainer," w 400, pushx, growx");
+		fillBlanksPanel.add(FillBlanksradioContainer,"wrap");
+
+		fillBlanksPanel.add(FillBlanksButtonContainer,"pushx, growx, span");
+		fillBlanksPanel.add(FillBlanksanswer2Container,", pushx, growx,span");
+		fillBlanksPanel.add(FillBlanksOutputContainer,"pushx, growx, span");
+
 		tabBar.add("Essay",essayPanel);
 		tabBar.add("True/False",trueFalsePanel);
 		tabBar.add("Multiple Choice Basic",MCQPanel);
@@ -465,7 +578,7 @@ public class GiftGui extends JFrame implements ActionListener{
 		gg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		gg.setLocation(300,300);
-		gg.setSize(1000,700);
+		gg.setSize(1000,1000);
 		
 		gg.setVisible(true);
 		
@@ -615,6 +728,68 @@ public class GiftGui extends JFrame implements ActionListener{
 		else if(e.getSource() == MCQButton5) {
 			MCQAGiftOutput.setText("::This is multiple choice::");
 		}
+
+		else if(e.getSource() == FillBlanksButton) {
+			FillBlankstextField= new JTextField("");
+			FillBlanksanswerContainer.add(FillBlankstextField,"   pushx, growx, span, wrap");
+			FillBlankstextField.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+			FillBlanksextra_radio = new JRadioButton("Correct");
+			FillBlanksradioContainer.add(FillBlanksextra_radio,  "wrap");
+		}
+		else if(e.getSource() == FillBlanksButton2)
+		{
+			FillBlanksanswerContainer.remove(FillBlankstextField);
+			repaint();
+			FillBlanksradioContainer.remove(FillBlanksextra_radio);
+		}
+		else if(e.getSource() == FillBlanksButton3) {
+
+			FillBlanksanswerText1.setText("");
+			FillBlanksanswerText2.setText("");
+			FillBlanksanswerText3.setText("");
+			FillBlanksanswerText4.setText("");
+			FillBlanksanswerText5.setText("");
+			FillBlankstextField.setText("");
+
+		}
+		else if(e.getSource() == FillBlanksButton4) {
+			//String QuestionText = MCQAquestionText.getText();
+
+			//MCQAGiftOutput.append(QuestionText + "{" + "\n");
+
+			String answer = FillBlanksquestionText.getText();
+			String answer2 = FillBlanksanswerText1.getText();
+			String answer3 = FillBlanksanswerText2.getText();
+
+			String answer4 = FillBlanksanswerText3.getText();
+			String  answer5= FillBlanksanswerText4.getText();
+			String answer6 = FillBlanksanswerText5.getText();
+
+			if(FillBlanksRadio.isSelected()) {
+				FillBlanksGiftOutput.append(answer + " {" + "=" + answer2 + "~" + answer3 + "~" + answer4 + "~" + answer5 + "}" + answer6);
+			}
+			else if(FillBlanksRadio2.isSelected())
+			{
+				FillBlanksGiftOutput.append(answer + " {" + "~" + answer2 + "=" + answer3 + "~" + answer4 + "~" + answer5 + "}" + answer6);
+			}
+			else if(FillBlanksRadio3.isSelected())
+			{
+				FillBlanksGiftOutput.append(answer + " {" + "~" + answer2 + "~" + answer3 + "=" + answer4 + "~" + answer5 + "}" + answer6);
+
+			}
+			else if(FillBlanksRadio4.isSelected())
+			{
+				FillBlanksGiftOutput.append(answer + " {" + "~" + answer2 + "~" + answer3 + "~" + answer4 + "=" + answer5 + "}" + answer6);
+
+			}
+
+
+
+
+		}
+
+
+
 
 	}
 }
