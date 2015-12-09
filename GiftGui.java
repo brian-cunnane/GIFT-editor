@@ -2,6 +2,8 @@ package gift;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -35,6 +37,7 @@ public class GiftGui extends JFrame{
 	JButton create = new JButton("Create GIFT Code");
 	
 	Container numericalContainer = new Container();
+	Container numericalButtonsContainer = new Container();
 	Container matchingContainer = new Container();
 	JTabbedPane tabBar = new JTabbedPane();
 	
@@ -55,10 +58,13 @@ public class GiftGui extends JFrame{
 		MCQAPanel.add(test4);
 		
 		//numerical panel goes here
-		numericalContainer.setLayout(new MigLayout("","[][][][][][]","[][]"));
+		numericalContainer.setLayout(new MigLayout("","",""));
+		numericalButtonsContainer.setLayout(new MigLayout("","",""));
+		
 		String[] numbers = {"-2","-1","0","1","2"};
 		JLabel title = new JLabel("Question Title:");
 		JLabel questionLabel = new JLabel("Question:");
+		JLabel answer = new JLabel("Answer:");
 		JLabel answerLabel = new JLabel("Answer:");
 		JLabel feedbackLabel = new JLabel("Feedback");
 		JLabel outputLabel = new JLabel("GIFT Output:");
@@ -67,29 +73,45 @@ public class GiftGui extends JFrame{
 		JTextArea questionText = new JTextArea();
 		JTextArea answerText = new JTextArea();
 		JTextArea feedbackText = new JTextArea();
-		JTextArea outputText = new JTextArea();
+		JTextArea outputText = new JTextArea(10,10);
 		questionText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 		answerText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 		feedbackText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-		numericalContainer.add(title);
-		numericalContainer.add(options,"wrap");
+		outputText.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+	
 		
-		//TODO reduce gap between question label and text field
-		numericalContainer.add(questionLabel);
-		numericalContainer.add(questionText,"pushx, growx, span, wrap");
+		numericalContainer.add(title,"sizegroup 1, split, span");
+		numericalContainer.add(options,"pushx, growx, span,wrap");
+		
+		numericalContainer.add(questionLabel,"split, span, sizegroup 1");
+		numericalContainer.add(questionText,"span, pushx, growx, wrap");
+		
 		
 		numericalContainer.add(answerLabel);
 		numericalContainer.add(feedbackLabel, "wrap");
+		numericalContainer.add(answer,"sizegroup 1,split, span");
 		numericalContainer.add(answerText,"pushx, growx");
 		numericalContainer.add(feedbackText,"pushx, growx, span, wrap");
 		
+		clearQ.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				questionText.setText("");
+				answerText.setText("");
+				feedbackText.setText("");
+				
+			}
+			
+		});
 		numericalContainer.add(clearQ,"align right, span, wrap");
 		numericalContainer.add(create,"align right, span, wrap");
 		
-		numericalContainer.add(outputLabel);
-		numericalContainer.add(outputText,"pushx, growx, span, wrap");
+		numericalContainer.add(outputLabel,"sizegroup 1, split, span");
+		numericalContainer.add(outputText,"pushx, growx,pushy, growy, span, wrap");
 		numericalContainer.add(clearOut, "align right, span, wrap");
-		numericalPanel.add(numericalContainer,"pushx, growx, span");
+		//numericalPanel.add(numericalLabelContainer,"aligny top, push y, grow y");
+		numericalPanel.add(numericalContainer,"aligny top,pushx, growx, span");
 		
 		//matching panel goes here
 		matchingContainer.setLayout(new MigLayout("debug","[][][][][][]","[][]"));
