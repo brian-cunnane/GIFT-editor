@@ -26,7 +26,9 @@ public class GiftGui extends JFrame implements ActionListener{
     JRadioButton extra_radio3 = new JRadioButton("Correct");
 	JRadioButton FillBlanksextra_radio = new JRadioButton("Correct");
     JRadioButton FillBlanksextra_radio2 = new JRadioButton("Correct");
+    JTextField MCQATitleText = new JTextField("");
     JRadioButton FillBlanksextra_radio3 = new JRadioButton("Correct");
+    JTextField FillBlanksTitleText = new JTextField("");
 
 
 	JLabel test6 = new JLabel("test6");
@@ -39,6 +41,8 @@ public class GiftGui extends JFrame implements ActionListener{
 	JButton delete = new JButton("delete");
 	JButton save = new JButton("Save");
 	JButton create = new JButton("Create GIFT Code");
+
+    JTextField MCQTitleText = new JTextField("");
 
 	JButton MCQButton = new JButton("Add Answer");
 	JButton MCQButton2 = new JButton("Remove Answer");
@@ -328,7 +332,7 @@ public class GiftGui extends JFrame implements ActionListener{
 		OutputContainer.setLayout(new MigLayout("debug","[]","[][]"));
 
 		JLabel MCQtitle = new JLabel("Question Title:");
-		JTextField MCQTitleText = new JTextField("");
+
 		MCQTitleText.setBackground(Color.WHITE);
 		JLabel MCQquestion = new JLabel("Question:");
 		JLabel MCQanswer = new JLabel("Answer:           ");
@@ -379,7 +383,7 @@ public class GiftGui extends JFrame implements ActionListener{
         answerContainer.add(textField,"   pushx, growx, span, wrap, cell 0 5");
         textField.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         textField.setVisible(false);
-        extra_feed = new JTextField("Text");
+        extra_feed = new JTextField("");
         answer2Container.add(extra_feed," pushx, growx, span, wrap,cell 0 5");
         extra_feed.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         extra_feed.setVisible(false);
@@ -388,7 +392,7 @@ public class GiftGui extends JFrame implements ActionListener{
         answerContainer.add(textField2,"   pushx, growx, span, wrap, cell 0 6");
         textField2.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         textField2.setVisible(false);
-        extra_feed2 = new JTextField("Text");
+        extra_feed2 = new JTextField("");
         answer2Container.add(extra_feed2," pushx, growx, span, wrap,cell 0 6");
         extra_feed2.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         extra_feed2.setVisible(false);
@@ -397,7 +401,7 @@ public class GiftGui extends JFrame implements ActionListener{
         answerContainer.add(textField3,"   pushx, growx, span, wrap, cell 0 7");
         textField3.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         textField3.setVisible(false);
-        extra_feed3 = new JTextField("Text");
+        extra_feed3 = new JTextField("");
         answer2Container.add(extra_feed3," pushx, growx, span, wrap,cell 0 7");
         extra_feed3.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         extra_feed3.setVisible(false);
@@ -440,7 +444,7 @@ public class GiftGui extends JFrame implements ActionListener{
 /* ======================================================================================================== */
 
 		JLabel MCQAtitle = new JLabel("Question Title:");
-		JTextField MCQATitleText = new JTextField("");
+
 		MCQATitleText.setBackground(Color.WHITE);
 		JLabel MCQAquestion = new JLabel("Question:");
 		JLabel MCQAanswer = new JLabel("Answer:");
@@ -768,8 +772,11 @@ public class GiftGui extends JFrame implements ActionListener{
 		matchingClearText.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				matchingGiftOutput.setText("");
+                matchingGiftOutput.setText("");
+                matchingQuestionText.setText("");
+
 			}
+
 		});
 		matchingGiftOutput.addActionListener(new ActionListener() {
 			@Override
@@ -880,10 +887,11 @@ public class GiftGui extends JFrame implements ActionListener{
 		//fill the blanks panel goes here
 		/* ======================================================================================================== */
 		JLabel FillBlankstitle = new JLabel("Question Title:");
-		JTextField FillBlanksTitleText = new JTextField("");
+
 		FillBlanksTitleText.setBackground(Color.WHITE);
-		JLabel FillBlanksquestion = new JLabel("Question:");
-		JLabel FillBlanksanswer = new JLabel("Answer:");
+		JLabel FillBlanksquestion = new JLabel("Question Start:");
+		JLabel FillBlanksanswer = new JLabel("Select");
+        JLabel FillBlanks = new JLabel("Blank(s)");
 		JLabel FillBlanksoutput = new JLabel("GIFT Output:");
 		JLabel FilleBlanksChoice = new JLabel("Choice:");
 		JLabel FilleBlanksQEnd = new JLabel("Question End:");
@@ -930,19 +938,19 @@ public class GiftGui extends JFrame implements ActionListener{
         FillBlanksanswerContainer.add(FillBlankstextField,"   pushx, growx, span, wrap, cell 0 5");
         FillBlankstextField.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         FillBlanksextra_radio = new JRadioButton("Correct");
-        FillBlanksradioContainer.add(FillBlanksextra_radio,  "wrap, cell 0 5 ");
+        FillBlanksradioContainer.add(FillBlanksextra_radio,  "wrap, cell 1 5 ");
 
         FillBlankstextField2= new JTextField("");
         FillBlanksanswerContainer.add(FillBlankstextField2,"   pushx, growx, span, wrap, cell 0 6");
         FillBlankstextField2.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         FillBlanksextra_radio2 = new JRadioButton("Correct");
-        FillBlanksradioContainer.add(FillBlanksextra_radio2,  "wrap, cell 0 6 ");
+        FillBlanksradioContainer.add(FillBlanksextra_radio2,  "wrap, cell 1 6 ");
 
         FillBlankstextField3= new JTextField("");
         FillBlanksanswerContainer.add(FillBlankstextField3,"   pushx, growx, span, wrap, cell 0 7");
         FillBlankstextField3.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         FillBlanksextra_radio3 = new JRadioButton("Correct");
-        FillBlanksradioContainer.add(FillBlanksextra_radio3,  "wrap, cell 0 7 ");
+        FillBlanksradioContainer.add(FillBlanksextra_radio3,  "wrap, cell 1 7 ");
 
         FillBlankstextField.setVisible(false);
         FillBlankstextField2.setVisible(false);
@@ -960,15 +968,15 @@ public class GiftGui extends JFrame implements ActionListener{
 		FillBlanksButtonContainer.add(FillBlanksButton3, "right, pushx, cell 3 2");
 		FillBlanksButtonContainer.add(FillBlanksButton4, "right,pushx, cell 3 2");
 
-		FillBlanksradioContainer.add(FillBlanksRadio,  ", cell 0 1");
-		FillBlanksradioContainer.add(FillBlanksRadio2, ", cell 0 2");
-		FillBlanksradioContainer.add(FillBlanksRadio3, ", cell 0 3");
-		FillBlanksradioContainer.add(FillBlanksRadio4, ", cell 0 4,wrap");
+        FillBlanksradioContainer.add(FillBlanksanswer, ", cell 0 0");
+        FillBlanksradioContainer.add(FillBlanksRadio2, ", cell 1 2");
+		FillBlanksradioContainer.add(FillBlanksRadio3, ", cell 1 3");
+		FillBlanksradioContainer.add(FillBlanksRadio4, ", cell 1 4,wrap");
 
         FillBlanksOutputContainer.add( FillBlanksGiftOutput, "cell 0 1 ,h 100!, pushx, growx, span, wrap");
 		FillBlanksOutputContainer.add( FillBlanksButton5, "right,pushx");
 
-		FillBlankstitleContainer.add(FillBlanksanswer,"aligny top");
+		FillBlankstitleContainer.add(FillBlanks,"aligny top");
 
         fillBlanksPanel.add(FillBlanksContainer, "pushx, growx, span");
 		fillBlanksPanel.add(FillBlankstitleContainer, "w 10, h 100, pushx, growx");
@@ -1065,6 +1073,7 @@ public class GiftGui extends JFrame implements ActionListener{
 			MCQanswerText6.setText("");
 			MCQanswerText7.setText("");
 			MCQanswerText8.setText("");
+            MCQTitleText.setText("");
 
             if(textField.isVisible())
             {
@@ -1085,7 +1094,8 @@ public class GiftGui extends JFrame implements ActionListener{
         else if(e.getSource() == MCQButton4) {
 			String QuestionText = MCQquestionText.getText();
 
-			GiftOutput.append(QuestionText + "{" + "\n");
+            GiftOutput.setText("::This is multiple choice::");
+            GiftOutput.append(MCQTitleText.getText() + "{" + "\n");
 
 			String answer = MCQanswerText1.getText();
 			String answer2 = MCQanswerText2.getText();
@@ -1097,11 +1107,10 @@ public class GiftGui extends JFrame implements ActionListener{
 			String feedback3 = MCQanswerText7.getText();
 			String feedback4 = MCQanswerText8.getText();
 
-            String Extraanswer =  textField.getText();
-            String ExtraFeed=  extra_feed.getText();
-
 			if(MCQRadio.isSelected()) {
-				GiftOutput.append(" = " + answer + "\n" + "#Yes-Well done" +"\n");
+
+
+				GiftOutput.append(" = " + answer + "\n" + "#Yes-" + feedback +"\n");
 				GiftOutput.append(" ~ " + answer2 + "\n"+ "#" + feedback2 +"\n");
 				GiftOutput.append(" ~ " + answer3 + "\n"+ "#" + feedback3 +"\n");
 				GiftOutput.append(" ~ " + answer4 + "\n"+ "#" + feedback4 +"\n");
@@ -1121,7 +1130,7 @@ public class GiftGui extends JFrame implements ActionListener{
 			else if(MCQRadio2.isSelected())
 			{
 				GiftOutput.append(" ~ " + answer + "\n" + "#" + feedback+ "\n");
-				GiftOutput.append(" = " + answer2 + "\n"+ "#Yes-Well done" +"\n");
+				GiftOutput.append(" = " + answer2 + "\n"+ "#Yes-" +feedback2 +"\n");
 				GiftOutput.append(" ~ " + answer3 + "\n"+ "#" + feedback3 +"\n");
 				GiftOutput.append(" ~ " + answer4 + "\n"+ "#" + feedback4 +"\n");
                 if(textField.isVisible())
@@ -1142,7 +1151,7 @@ public class GiftGui extends JFrame implements ActionListener{
 			{
 				GiftOutput.append(" ~ " + answer + "\n" + "#" + feedback+ "\n");
 				GiftOutput.append(" ~ " + answer2 + "\n"+ "#"+ feedback2 + "\n");
-				GiftOutput.append(" = " + answer3 + "\n"+ "#Yes-Well done" +"\n");
+				GiftOutput.append(" = " + answer3 + "\n"+ "#Yes-" + feedback3 +"\n");
 				GiftOutput.append(" ~ " + answer4 + "\n"+ "#" + feedback4 +"\n");
                 if(textField.isVisible())
                 {
@@ -1163,7 +1172,7 @@ public class GiftGui extends JFrame implements ActionListener{
 				GiftOutput.append(" ~ " + answer + "\n" + "#" + feedback+ "\n");
 				GiftOutput.append(" ~ " + answer2 + "\n"+ "#"+ feedback2 + "\n");
 				GiftOutput.append(" ~ " + answer3 + "\n"+ "#"+ feedback3 +"\n");
-				GiftOutput.append(" = " + answer4 + "\n"+ "#Yes-Well done"  +"\n");
+				GiftOutput.append(" = " + answer4 + "\n"+ "#Yes-" + feedback4  +"\n");
                 if(textField.isVisible())
                 {
                     GiftOutput.append(" ~ " + textField.getText() + "\n"+ "#" + extra_feed.getText() +"\n");
@@ -1186,7 +1195,7 @@ public class GiftGui extends JFrame implements ActionListener{
                 GiftOutput.append(" ~ " + answer4 + "\n"+ "#"  +"\n");
                 if(textField.isVisible())
                 {
-                    GiftOutput.append(" = " + textField.getText() + "\n"+ "#Yes-Well done\"" +"\n");
+                    GiftOutput.append(" = " + textField.getText() + "\n"+ "#Yes-" + extra_feed +"\n");
                 }
                 else if(textField2.isVisible())
                 {
@@ -1209,7 +1218,7 @@ public class GiftGui extends JFrame implements ActionListener{
                 }
                 else if(textField2.isVisible())
                 {
-                    GiftOutput.append(" ~ " + textField2.getText() + "\n"+ "#" + extra_feed2.getText() +"\n");
+                    GiftOutput.append(" ~ " + textField2.getText() + "\n"+ "#" + "#Yes-" + extra_feed2.getText()  +"\n");
                 }
                 else if(textField3.isVisible())
                 {
@@ -1228,11 +1237,11 @@ public class GiftGui extends JFrame implements ActionListener{
                 }
                 else if(textField2.isVisible())
                 {
-                    GiftOutput.append(" ~" + textField2.getText() + "\n"+ "#" + "#Yes-Well done\"" +"\n");
+                    GiftOutput.append(" ~" + textField2.getText() + "\n"+ "#" + extra_feed2.getText() +"\n");
                 }
                 else if(textField3.isVisible())
                 {
-                    GiftOutput.append(" ~ " + textField3.getText() + "\n"+  "#" + "#Yes-Well done\"" +"\n");
+                    GiftOutput.append(" ~ " + textField3.getText() + "\n"+  "#Yes" + extra_feed3.getText()  +"\n");
                 }
             }
 
@@ -1286,18 +1295,18 @@ public class GiftGui extends JFrame implements ActionListener{
         }
 		else if(e.getSource() == MCQAButton3) {
 
-            MCQanswerText1.setText("");
-            MCQanswerText2.setText("");
-            MCQanswerText3.setText("");
-            MCQanswerText4.setText("");
-            MCQanswerText5.setText("");
-            MCQanswerText6.setText("");
-            MCQanswerText7.setText("");
-            MCQanswerText8.setText("");
+            MCQAanswerText1.setText("");
+            MCQAanswerText2.setText("");
+            MCQAanswerText3.setText("");
+            MCQAanswerText4.setText("");
+            MCQAanswerText5.setText("");
+            MCQAanswerText6.setText("");
+            MCQATitleText.setText("");
+
 
             if(MCQAtextField.isVisible())
             {
-                textField.setText("");
+                MCQAtextField.setText("");
                 MCQAextra_feed.setText("");
             }
             else if(MCQAtextField2.isVisible())
@@ -1313,7 +1322,7 @@ public class GiftGui extends JFrame implements ActionListener{
 
 		}
 		else if(e.getSource() == MCQAButton4) {
-			String QuestionText = MCQAquestionText.getText();
+			String QuestionText = MCQATitleText.getText();
 
 			MCQAGiftOutput.append(QuestionText + "{" + "\n");
 
@@ -1379,9 +1388,11 @@ public class GiftGui extends JFrame implements ActionListener{
                 MCQAGiftOutput.append("#" + MCQAextra_feed3 + "\n");
             }
 
+            MCQAGiftOutput.append("}");
+
 		}
 		else if(e.getSource() == MCQButton5) {
-			MCQAGiftOutput.setText("::This is multiple choice::");
+			MCQAGiftOutput.setText("::Multiple choice::");
 		}
 
 		else if(e.getSource() == FillBlanksButton) {
@@ -1430,6 +1441,7 @@ public class GiftGui extends JFrame implements ActionListener{
 			FillBlanksanswerText4.setText("");
 			FillBlanksanswerText5.setText("");
 			FillBlankstextField.setText("");
+            FillBlanksTitleText.setText("");
 
             if(FillBlankstextField.isVisible())
             {
@@ -1449,6 +1461,13 @@ public class GiftGui extends JFrame implements ActionListener{
 
 		}
 		else if(e.getSource() == FillBlanksButton4) {
+
+            FillBlanksGiftOutput.append("::" + FillBlanksTitleText.getText()+ "::");
+           // FillBlanksGiftOutput.append("::" + FillBlanksQ.getText()+ "::");
+
+
+           // FillBlanksGiftOutput.append("::Fill the Blanks::");
+
 
 			String answer = FillBlanksquestionText.getText();
 			String answer2 = FillBlanksanswerText1.getText();
